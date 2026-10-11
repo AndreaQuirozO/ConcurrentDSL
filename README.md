@@ -134,7 +134,7 @@ The test suite includes:
 ## Roadmap & Milestones
 
 * [x] **Proposal**: Initial proposal and design sketch.
-* [ ] **Check-In #1 (Design)**: Syntax, operational semantics ($\rightarrow, \Rightarrow$), type system draft, and repo.
+* [ ] **Check-In #1 (Design)**: Syntax, operational semantics ($\rightarrow, \Rightarrow$), type system draft, and repo set-up.
 * [ ] **Check-In #2 (Prototype)**: AST, `ocamllex`/`ocamlyacc` parser, and small-step interpreter.
 * [ ] **Check-In #3 (Release Candidate)**: Integrated type checker, constraint solver, soundness proof draft and test suite.
 * [ ] **Final Submission**: Final report.
