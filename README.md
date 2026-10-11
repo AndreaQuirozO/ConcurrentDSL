@@ -143,9 +143,8 @@ The test suite includes:
 
 ## References
 
-[1] Naoki Kobayashi. “A new type system for deadlock-free processes”. In: International Conference on
-Concurrency Theory. Springer. 2006, pp. 233–247.
-[2] Naoki Kobayashi. “Type-based information flow analysis for the π-calculus”. In: Acta Informatica 42.4
-(2005), pp. 291–347.
-[3] Naoki Kobayashi, Shin Saito, and Eijiro Sumii. “An implicitly-typed deadlock-free process calculus”. In:
-International Conference on Concurrency Theory. Springer. 2000, pp. 489–504.
+[1] Naoki Kobayashi. “A new type system for deadlock-free processes”. In: International Conference on Concurrency Theory. Springer. 2006, pp. 233–247.
+
+[2] Naoki Kobayashi. “Type-based information flow analysis for the π-calculus”. In: Acta Informatica 42.4 (2005), pp. 291–347.
+
+[3] Naoki Kobayashi, Shin Saito, and Eijiro Sumii. “An implicitly-typed deadlock-free process calculus”. In: International Conference on Concurrency Theory. Springer. 2000, pp. 489–504.
