@@ -148,3 +148,5 @@ The test suite includes:
 [2] Naoki Kobayashi. “Type-based information flow analysis for the π-calculus”. In: Acta Informatica 42.4 (2005), pp. 291–347.
 
 [3] Naoki Kobayashi, Shin Saito, and Eijiro Sumii. “An implicitly-typed deadlock-free process calculus”. In: International Conference on Concurrency Theory. Springer. 2000, pp. 489–504.
+
+[4] Eijiro Sumii and Naoki Kobayashi. “A generalized deadlock-free process calculus”. In: Electronic Notes in TheoreticalComputer Science 16.3 (1998), pp. 225–247.
