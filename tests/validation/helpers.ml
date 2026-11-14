@@ -6,7 +6,8 @@ let check name ok =
 
 let finish label =
   if !failures > 0 then (Printf.printf "\n%d %s test(s) FAILED\n" !failures label; exit 1)
-  else Printf.printf "\nall %s tests PASSED\n" label
+  else Printf.printf "\nall %s tests PASSED\n" label;
+  Printf.printf "-------------------"
 
 let contains s sub =
   let n = String.length s and m = String.length sub in

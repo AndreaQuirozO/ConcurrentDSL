@@ -38,8 +38,6 @@ let faults name g n =
   check name
     (try ignore (step_of g n); false with Runtime_error _ -> true)
 
-let e = []  (* empty store / set *)
-
 (* ---------- expressions: [[a]]_{h,sigma_I} = h(sigma_I(x)) ---------- *)
 let () =
   let l = loc ~si:[ ("x", 0); ("y", 1) ] Skip in

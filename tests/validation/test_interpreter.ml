@@ -2,6 +2,8 @@ open Dsl
 open Interpreter
 open Helpers
 
+(* ---------- helpers ---------- *)
+
 let config src =
   make_configuration (Parser.program Lexer.token (Lexing.from_string src))
 
@@ -19,6 +21,7 @@ let expect_status name src expected =
 let reachable name src o =
   check name (try List.mem o (outcomes src) with _ -> false)
 
+(* running the program raises a runtime fault *)
 let faults name src =
   check name (try ignore (outcomes src); false with Runtime_error _ -> true)
 
@@ -114,6 +117,4 @@ let () =
   faults "join of unbound thread variable" "join t";
   faults "joining twice" "t := spawn { skip }; join t; join t"
 
-let () =
-  if !failures > 0 then (Printf.printf "\n%d test(s) FAILED\n" !failures; exit 1)
-  else print_endline "\nall interpreter tests passed"
+let () = finish "interpreter"
