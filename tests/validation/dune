@@ -1,0 +1,4 @@
+(tests
+ (names test_lexer test_parser test_pprint test_interpreter test_steps)
+ (deps (glob_files ../positive/*.dsl) (glob_files ../negative/*.dsl))
+ (libraries dsl))

@@ -26,8 +26,13 @@ Concurrent programming with shared memory and explicit locks is notoriously pron
 ## Language Syntax
 
 ```text
-a ::= x | n | a1 + a2 | a1 * a2
-b ::= true | false | a1 < a2
+a ::= x | n | a1 + a2 | a1 - a2 | a1 * a2
+
+b ::= true | false
+    | a1 = a2 | a1 != a2
+    | a1 < a2 | a1 <= a2 | a1 > a2 | a1 >= a2
+    | not b | b1 and b2 | b1 or b2
+
 c ::= skip
     | x := a
     | c1; c2
@@ -47,19 +52,23 @@ c ::= skip
 
 ```text
 .
+├── bin/
+│   └── main.ml             # CLI entry point for parsing, type-checking, and interpreting programs
 ├── src/
-│   ├── ast.ml          # Abstract Syntax Tree definitions
-│   ├── lexer.mll       # ocamllex source for tokenization
-│   ├── parser.mly      # ocamlyacc grammar for parsing
-│   ├── interpreter.ml  # Small-step local (→) and global (⇒) operational semantics
-│   ├── typechecker.ml  # Static analyzer enforcing lock-ordering constraints
-│   ├── pprint.ml       # Pretty-printing functions for AST nodes
-│   └── main.ml         # Entry point / CLI
+│   ├── ast.ml              # Abstract Syntax Tree definitions
+│   ├── lexer.mll           # ocamllex source for tokenization
+│   ├── parser.mly          # ocamlyacc grammar for parsing
+│   ├── interpreter.ml      # Small-step local (→) and global (⇒) operational semantics
+│   ├── typechecker.ml      # Static analyzer enforcing lock-ordering constraints
+│   └── pprint.ml           # Pretty-printing functions for AST nodes
 ├── test/
-│   ├── positive/       # Valid concurrent programs (should pass typechecker)
-│   └── negative/       # Deadlocking programs (should be rejected statically)
+│   ├──  deadlock/          # Test cases for deadlock detection
+│   │     ├── positive/     # Valid concurrent programs (should pass typechecker)
+│   │     └── negative/     # Deadlocking programs (should be rejected statically)
+│   ├──  functional/        # Test cases for fucntionality of DSL
+│   └──  validation/        # Unit test cases for each module         
 ├── doc/
-│   └── design.pdf      # CS-462 formal design document
+│   └── design.pdf          # CS-462 formal design document
 ├── Makefile
 └── README.md
 
@@ -134,7 +143,7 @@ The test suite includes:
 ## Roadmap & Milestones
 
 * [x] **Proposal**: Initial proposal and design sketch.
-* [ ] **Check-In #1 (Design)**: Syntax, operational semantics ($\rightarrow, \Rightarrow$), type system draft, and repo set-up.
+* [x] **Check-In #1 (Design)**: Syntax, operational semantics ($\rightarrow, \Rightarrow$), type system draft, and repo set-up.
 * [ ] **Check-In #2 (Prototype)**: AST, `ocamllex`/`ocamlyacc` parser, and small-step interpreter.
 * [ ] **Check-In #3 (Release Candidate)**: Integrated type checker, constraint solver, soundness proof draft and test suite.
 * [ ] **Final Submission**: Final report.
