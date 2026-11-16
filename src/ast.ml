@@ -31,3 +31,9 @@ type com =
   | CreateLock of var       (* x := create_lock() *)
   | Lock of var             (* lock x *)
   | Unlock of var           (* unlock x *)
+
+
+type ty = 
+  | TInt            (* int *)
+  | TLock of int    (* lock(lev) *)
+  | TTh of int      (* th(lev) *)

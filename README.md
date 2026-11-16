@@ -87,7 +87,7 @@ join t
 * `lock` blocks while any thread holds the lock (locks are non-reentrant). `join` blocks until the child has terminated.
 * A configuration is a **deadlock** when some thread is blocked and no thread can move.
 
-The rules are written out in the report (`doc/`).
+The rules are written out in the report (`doc/documentation.pdf`).
 
 ---
 
@@ -101,6 +101,8 @@ The judgment is `Γ, H, base ⊢ c ⇒ Γ', H'`, where `Γ` maps variables to `i
 * A program is well typed if `∅, ∅, 0 ⊢ c ⇒ Γ, ∅`.
 
 **Limitations:** the system is conservative (some deadlock-free programs are rejected, for example a lock that is never released). It tracks lock obligations, not thread obligations, so an unjoined thread is allowed. It does not prevent data races.
+
+The type sytem is written out in the report (`doc/documentation.pdf`).
 
 ---
 
@@ -122,7 +124,7 @@ The judgment is `Γ, H, base ⊢ c ⇒ Γ', H'`, where `Γ` maps variables to `i
 │   ├── deadlock/
 │   │   ├── positive/        # Programs that must be accepted and never deadlock
 │   │   └── negative/        # Programs that must be rejected and really can deadlock
-│   ├── functional/          # Larger programs exercising the language
+│   ├── functional/          # Programs (*.dsl) with expected output (*.expected), run by `make functional`
 │   └── validation/          # OCaml unit tests, one file per module
 │       ├── helpers.ml       # Shared test harness
 │       ├── test_lexer.ml
@@ -194,7 +196,8 @@ Exit codes:
 
 ```bash
 dune build && dune test --force   # OCaml unit tests
-make test                         # file-based deadlock tests
+make test                         # deadlock tests
+make functional                   # functional tests
 ```
 
 **Unit tests (`tests/validation/`)**
@@ -220,6 +223,13 @@ The type checker tests check each program twice: the checker's verdict, and the 
 * `tests/deadlock/negative/*.dsl` must be rejected by the type checker **and** deadlock in some schedule.
 
 To add a case, drop a `.dsl` file in the right folder. A syntax error in a test file is reported as `FAILED`, not as a rejection.
+
+**Functional tests (`make functional`)**
+
+* Each `tests/functional/name.dsl` is run with `./dsl` and its output must match `tests/functional/name.expected` exactly (final variables sorted by name, then the status, e.g. `x = 6` / `terminated`).
+* Programs must be well typed and give the same result in every schedule, since `./dsl` runs a single random one.
+
+To add a case, write `name.dsl`, work out its expected output by hand, and save it as `name.expected`.
 
 ---
 

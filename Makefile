@@ -1,4 +1,4 @@
-.PHONY: dsl test clean
+.PHONY: dsl test clean functional
 
 dsl:
 	dune build ./bin/main.exe
@@ -20,6 +20,15 @@ test: dsl
 	  ./dsl --deadlocks "$$f" > /dev/null 2>&1; dl=$$?; \
 	  if [ $$rc -eq 1 ] && [ $$dl -eq 3 ]; then echo "OK:     $$f"; \
 	  else echo "FAILED: $$f (should be rejected [got $$rc] and deadlock [got $$dl])"; fi; \
+	done
+
+functional: dsl
+	@for f in tests/functional/*.dsl; do \
+	  [ -e "$$f" ] || continue; \
+	  exp="$${f%.dsl}.expected"; \
+	  if ./dsl "$$f" 2>&1 | diff -q - "$$exp" > /dev/null; \
+	  then echo "OK:     $$f"; \
+	  else echo "FAILED: $$f (output differs from $$exp)"; fi; \
 	done
 
 clean:

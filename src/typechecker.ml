@@ -8,8 +8,7 @@ open Ast
 module SMap = Map.Make (String)
 module SSet = Set.Make (String)
 
-(* τ ::= int | lock(lev) | th(lev); the int is a level variable *)
-type ty = TInt | TLock of int | TTh of int
+
 type env = ty SMap.t
 
 (* minimum level that may be used: 0, or (level of thread t) + 1 *)
