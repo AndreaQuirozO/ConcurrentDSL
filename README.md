@@ -1,6 +1,6 @@
 # Concurrent DSL with Static Deadlock Freedom
 
-A Domain-Specific Language (DSL) in OCaml for shared-memory concurrency with explicit locks. A type system, inspired by Kobayashi's work on deadlock-free process calculi [1, 2, 3, 4], rejects programs that can deadlock before they run.
+A Domain-Specific Language (DSL) in OCaml for shared-memory concurrency with explicit locks. A type system, inspired by Kobayashi's work on deadlock-free process calculi [1, 2, 3, 4] and related extensions and specializations for lock-based languages [5], rejects programs that can deadlock before they run.
 
 Developed as the course project for CS-462: Programming Language Foundations at EPFL.
 
@@ -252,3 +252,5 @@ To add a case, write `name.dsl`, work out its expected output by hand, and save 
 [3] Naoki Kobayashi, Shin Saito, and Eijiro Sumii. “An implicitly-typed deadlock-free process calculus”. In: International Conference on Concurrency Theory. Springer. 2000, pp. 489–504.
 
 [4] Eijiro Sumii and Naoki Kobayashi. “A generalized deadlock-free process calculus”. In: Electronic Notes in Theoretical Computer Science 16.3 (1998), pp. 225–247.
+
+[5] Suenaga, K. (2008). Type-Based Deadlock-Freedom Verification for Non-Block-Structured Lock Primitives and Mutable References. In: Ramalingam, G. (eds) Programming Languages and Systems. APLAS 2008. Lecture Notes in Computer Science, vol 5356. Springer, Berlin, Heidelberg. https://doi.org/10.1007/978-3-540-89330-1_12
